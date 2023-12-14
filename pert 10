@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+public class PenjumlahanMatriks {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Input matriks 1
+        System.out.println("MATRIK 1");
+        int[][] matriks1 = inputMatriks(input);
+
+        // Input matriks 2
+        System.out.println("\nMATRIK 2");
+        int[][] matriks2 = inputMatriks(input);
+
+        // Penjumlahan matriks
+        int[][] hasil = penjumlahanMatriks(matriks1, matriks2);
+
+        // Menampilkan hasil penjumlahan
+        System.out.println("\nHasil Penjumlahan Matrik 1 dan Matrik 2 adalah:");
+        tampilMatriks(hasil);
+    }
+
+    // Metode untuk input matriks
+    public static int[][] inputMatriks(Scanner input) {
+        System.out.print("Masukkan jumlah baris: ");
+        int baris = input.nextInt();
+        System.out.print("Masukkan jumlah kolom: ");
+        int kolom = input.nextInt();
+
+        int[][] matriks = new int[baris][kolom];
+
+        System.out.println("Masukkan elemen matriks:");
+        for (int i = 0; i < baris; i++) {
+            for (int j = 0; j < kolom; j++) {
+                System.out.print("Matriks[" + (i + 1) + "][" + (j + 1) + "]: ");
+                matriks[i][j] = input.nextInt();
+            }
+        }
+
+        return matriks;
+    }
+
+    // Metode untuk penjumlahan matriks
+    public static int[][] penjumlahanMatriks(int[][] matriks1, int[][] matriks2) {
+        int baris = matriks1.length;
+        int kolom = matriks1[0].length;
+
+        int[][] hasil = new int[baris][kolom];
+
+        for (int i = 0; i < baris; i++) {
+            for (int j = 0; j < kolom; j++) {
+                hasil[i][j] = matriks1[i][j] + matriks2[i][j];
+            }
+        }
+
+        return hasil;
+    }
+
+    // Metode untuk menampilkan matriks
+    public static void tampilMatriks(int[][] matriks) {
+        for (int[] baris : matriks) {
+            for (int elemen : baris) {
+                System.out.print(elemen + "   ");
+            }
+            System.out.println();
+        }
+    }
+}
